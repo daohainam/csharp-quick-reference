@@ -2,3 +2,73 @@
 
 Bộ tài liệu này được thiết kế như một dạng tài liệu tham khảo, giúp các bạn nắm được tất cả những khái niệm và thành phần của C#. Vì ở dạng tham khảo nên sẽ có một số khó khăn và không phù hợp với người học từ đầu, nếu chưa biết gì về C#, bạn nên tìm một giáo trình đơn giản hơn và dùng tài liệu này để tham khảo kỹ hơn trong quá trình học.
 
+### Nội dung  
+- [Hàm Main](1-main-method.md)
+    - Tham số
+    - Giá trị trả về của hàm Main
+    - Hàm async Main
+
+- [Hệ thống kiểu dữ liệu](2-type-system.md)
+    - Tổng quan về hệ thống kiểu dữ liệu
+      - Value type
+      - Reference type
+      - Các kiểu dữ liệu có sẵn
+      - Kiểu object
+      - Kiểu string
+      - Kiểu dynamic
+      - Kiểu void
+      - Enum
+      - Struct
+      - Ref struct
+      - Null
+      - Các kiểu dữ liệu nullable
+      - Các kiểu dữ liệu không được quản lý (Unmanaged types)
+    - Khai báo biến
+      - Từ khóa var
+      - Giá trị mặc nhiên của biến
+- [Toán tử](3-operators.md)
+  - 
+- [Từ khóa](4-keywords.md)
+    - Modifier
+      - Access modifier
+        - public
+        - protected
+        - internal
+        - private
+        - file
+      - abstract
+      - async
+      - const
+      - event
+      - extern
+      - new
+      - out
+      - override
+      - readonly
+      - sealed
+      - static
+      - unsafe
+      - virtual
+      - volatile
+    - Các cấu trúc điều khiển
+      - Các cấu trúc rẽ nhánh
+      - Các cấu trúc lặp
+      - Các câu lệnh nhảy
+      - Cấu trúc xử lý ngoại lệ (exception)
+      - checked/unchecked
+      - fixed
+      - lock
+      - yield
+- [Phát biểu](4-keywords.md)
+- [Phương thức](5-methods.md)
+    - Khai báo
+    - Gọi phương thức
+    - Tham số
+      - Truyền theo giá trị và truyền theo tham chiếu
+      - Safe context
+      - Modifier
+        - ref
+        - out
+        - ref readonly
+        - in
+        - params
