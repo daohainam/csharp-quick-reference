@@ -5,7 +5,7 @@ Bộ tài liệu này được thiết kế như một dạng tài liệu tham k
 ### Nội dung  
 - [Hàm Main](main-function/main-function.md)
     - [Tham số](main-function/parameter.md)
-    - [Giá trị trả về của hàm Main](main-function/return-value.md)
+	- [Top-level statements](main-function/top-level-statements.md)
     - [Hàm async Main](main-function/async-main.md)
 
 - [Hệ thống kiểu dữ liệu](type-system.md)
