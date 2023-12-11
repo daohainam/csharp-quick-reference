@@ -8,22 +8,21 @@ Bộ tài liệu này được thiết kế như một dạng tài liệu tham k
 	- [Top-level statements](main-function/top-level-statements.md)
     - [Hàm async Main](main-function/async-main.md)
 
-- [Hệ thống kiểu dữ liệu](type-system.md)
-    - Tổng quan về hệ thống kiểu dữ liệu
-      - Value type
-          - Các kiểu dữ liệu nullable
-          - Boxing và Unboxing
-      - Reference type
-      - Các kiểu dữ liệu có sẵn
-      - Kiểu object
-      - Kiểu string
-      - Kiểu dynamic
-      - Kiểu void
-      - Enum
-      - Struct
-      - Ref struct
-      - Null
-      - Các kiểu dữ liệu không được quản lý (Unmanaged types)
+- [Hệ thống kiểu dữ liệu](type-system/type-system.md)
+	- [Value type](type-system/value-type.md)
+	  - Các kiểu dữ liệu nullable
+	  - Boxing và Unboxing
+	- Reference type
+	- Các kiểu dữ liệu có sẵn
+	- Kiểu object
+	- Kiểu string
+	- Kiểu dynamic
+	- Kiểu void
+	- Enum
+	- Struct
+	- Ref struct
+	- Null
+	- Các kiểu dữ liệu không được quản lý (Unmanaged types)
     - Khai báo biến
       - Từ khóa var
       - Giá trị mặc nhiên của biến
