@@ -224,7 +224,7 @@ Hoạt động với `string`, `Span<T>`, `Index`, `Range`, và các type tự c
 
 ## 13. Toán tử ngữ nghĩa đặc biệt
 
-- **`await`**: tạm ngưng method async cho đến khi awaitable hoàn thành. (*Xem chương Async*)  
+- **`await`**: tạm ngưng method async cho đến khi awaitable hoàn thành. (*Xem phần [Async](async.md)*)  
 - **`nameof(x)`**: lấy **tên** định danh dạng chuỗi, không bị rename runtime (an toàn refactor).  
 - **`sizeof(T)`**: kích thước byte của kiểu unmanaged (với managed struct, thường cần `unsafe`).  
 - **`typeof(T)`**: trả `System.Type` của `T`.  
