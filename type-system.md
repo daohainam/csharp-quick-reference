@@ -30,7 +30,7 @@ Nội dung chương này:
   - `using`
   - `extern alias`
 - Ép kiểu (casting)
-- Sơ đồ tổng quan hệ thống kiểu dữ liệu (type tree)
+- Sơ đồ tổng quan hệ thống kiểu dữ liệu
 
 ---
 
@@ -708,64 +708,7 @@ unchecked
 
 ---
 
-## 17. Sơ đồ tổng quan hệ thống kiểu dữ liệu (Type tree)
-
-Bạn nên giữ phần này ở dạng font monospace (Code / Consolas) trong Word/Markdown để sơ đồ không bị lệch.
-
-```text
-                         ┌──────────────────────┐
-                         │    System.Object     │
-                         │   (object – gốc)     │
-                         └─────────┬────────────┘
-                                   │
-                 ┌─────────────────┴─────────────────┐
-                 │                                   │
-        ┌────────▼────────┐                 ┌────────▼────────┐
-        │   Value types   │                 │ Reference types  │
-        │ (kiểu giá trị)  │                 │ (kiểu tham chiếu)│
-        └────────┬────────┘                 └────────┬────────┘
-                 │                                   │
-   ┌─────────────┼─────────────┐        ┌────────────┼─────────────────────────────┐
-   │             │             │        │            │             │               │
-┌──▼───┐    ┌────▼────┐   ┌────▼────┐   │    ┌───────▼───────┐ ┌──▼──────┐  ┌─────▼─────┐
-│Prim. │    │  enum   │   │ struct  │   │    │   class       │ │interface│  │  delegate │
-│(số… )│    │         │   │ (incl.  │   │    │ (bao gồm:     │ │         │  │           │
-└──┬───┘    └────┬────┘   │ ref/    │   │    │  record,      │ └─────────┘  └───────────┘
-   │             │        │ ref struct)│ │    │  record struct│
-   │             │        └────────────┘ │    └───────────────┘
-   │             │                        │
-   │             │                        │
-   │             │                        │
-   │      ┌──────▼──────┐        ┌────────▼────────┐
-   │      │ Nullable<T> │        │      array      │
-   │      │ (T?)        │        │  (T[], T[,,]…)  │
-   │      └─────────────┘        └────────┬────────┘
-   │                                       │
-   │                              ┌────────▼──────────┐
-   │                              │     string        │
-   │                              │ (System.String)   │
-   │                              └────────┬──────────┘
-   │                                       │
-   │                              ┌────────▼──────────┐
-   │                              │     dynamic*      │
-   │                              │ (xử lý runtime)   │
-   │                              └───────────────────┘
-
-Ghi chú:
-- Primitive value types (Prim.): bool, byte, sbyte, short, ushort, int, uint, long, ulong,
-  char, float, double, decimal.
-- Nullable<T> (T?): chỉ áp dụng cho value type → tạo ra “value type có thể null”.
-- struct: tất cả struct (bao gồm enum, user-defined struct, ref struct, record struct).
-- ref struct: struct “stack-only”, không được boxing, không dùng làm field trong class…
-- class: bao gồm các class bình thường, record class, v.v.
-- dynamic: về thực chất là System.Object + thông tin động; được xử lý đặc biệt bởi runtime.
-- string: reference type bất biến (immutable) nhưng được hỗ trợ đặc biệt bởi runtime + ngôn ngữ.
-- array: mọi mảng (T[], T[,], …) đều là reference type thừa kế từ System.Array.
-```
-
----
-
-### 17.1 Phiên bản mini (tóm tắt)
+## 17. Sơ đồ tổng quan hệ thống kiểu dữ liệu
 
 ```text
 System.Object (object)
@@ -790,3 +733,17 @@ System.Object (object)
    ├─ string (System.String – immutable)
    └─ dynamic* (xử lý kiểu ở runtime, dựa trên object)
 ```
+
+Ghi chú:
+- Primitive value types (Prim.): bool, byte, sbyte, short, ushort, int, uint, long, ulong,
+  char, float, double, decimal.
+- Nullable<T> (T?): chỉ áp dụng cho value type → tạo ra “value type có thể null”.
+- struct: tất cả struct (bao gồm enum, user-defined struct, ref struct, record struct).
+- ref struct: struct “stack-only”, không được boxing, không dùng làm field trong class…
+- class: bao gồm các class bình thường, record class, v.v.
+- dynamic: về thực chất là System.Object + thông tin động; được xử lý đặc biệt bởi runtime.
+- string: reference type bất biến (immutable) nhưng được hỗ trợ đặc biệt bởi runtime + ngôn ngữ.
+- array: mọi mảng (T[], T[,], …) đều là reference type thừa kế từ System.Array.
+```
+
+---
