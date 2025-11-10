@@ -1,7 +1,6 @@
 # Phương thức (Method) trong C#
 
 Trong C#, **phương thức (method)** là đơn vị cơ bản để đóng gói logic và định nghĩa hành vi cho một kiểu (`class`, `struct`, `record`, v.v.).  
-Chương này tập trung vào các khái niệm nền tảng của *method*, **không** bao gồm phần bất đồng bộ (async) — phần đó đã được tách ra ở chương riêng: [async.md](./async.md).
 
 ---
 
