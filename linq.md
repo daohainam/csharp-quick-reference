@@ -1,35 +1,36 @@
 # LINQ (Language Integrated Query) trong C#/.NET
 
 **LINQ** đem cú pháp truy vấn vào C#, thống nhất cách làm việc với **tập hợp đối tượng**, **XML**, **CSDL**, **JSON**, **in-memory** và cả **stream async** (thông qua `IAsyncEnumerable<T>` + gói mở rộng).  
-Chương này bao phủ: **cú pháp**, **toán tử chuẩn**, **deferred vs immediate execution**, **IEnumerable vs IQueryable**, **join/grouping**, **projection**, **set operations**, **PLINQ**, **best practices & pitfalls**, và **thiết kế LINQ operator tuỳ biến**.
 
 ---
 
 ## Mục lục
 
-1. [Tư duy LINQ & hai cú pháp](#1-tư-duy-linq--hai-cú-pháp)  
-2. [Deferred vs Immediate execution](#2-deferred-vs-immediate-execution)  
-3. [LINQ to Objects vs IQueryable (EF/LINQ Providers)](#3-linq-to-objects-vs-iqueryable-eflinq-providers)  
-4. [Nhóm toán tử chuẩn (Standard Query Operators)](#4-nhóm-toán-tử-chuẩn-standard-query-operators)  
-   4.1 [Filtering: `Where`, `OfType`](#41-filtering-where-oftype)  
-   4.2 [Projection: `Select`, `SelectMany`](#42-projection-select-selectmany)  
-   4.3 [Sorting: `OrderBy`, `ThenBy`, `Reverse`](#43-sorting-orderby-thenby-reverse)  
-   4.4 [Grouping: `GroupBy`, `ToLookup`](#44-grouping-groupby-tolookup)  
-   4.5 [Joining: `Join`, `GroupJoin`, Left Join](#45-joining-join-groupjoin-left-join)  
-   4.6 [Set: `Distinct`, `Union`, `Intersect`, `Except`](#46-set-distinct-union-intersect-except)  
-   4.7 [Quantifiers: `Any`, `All`, `Contains`](#47-quantifiers-any-all-contains)  
-   4.8 [Element: `First`, `Single`, `Last`, `ElementAt`](#48-element-first-single-last-elementat)  
-   4.9 [Partitioning: `Skip`, `Take`, `SkipWhile`, `TakeWhile`](#49-partitioning-skip-take-skipwhile-takewhile)  
-   4.10 [Aggregation: `Count`, `Sum`, `Min`, `Max`, `Average`, `Aggregate`](#410-aggregation-count-sum-min-max-average-aggregate)  
-   4.11 [Generation/Conversion: `Range`, `Repeat`, `Empty`, `ToList`, `ToArray`, `ToDictionary`, `ToHashSet`…](#411-generationconversion-range-repeat-empty-tolist-toarray-todictionary-tohashset)  
-   4.12 [`Zip`, `Chunk`, `Append/Prepend`, `SequenceEqual`, `DefaultIfEmpty`](#412-zip-chunk-appendprepend-sequenceequal-defaultifempty)  
-5. [Query syntax ↔ method syntax (bảng quy chiếu)](#5-query-syntax--method-syntax-bảng-quy-chiếu)  
-6. [IQueryable & biểu thức (Expression)](#6-iqueryable--biểu-thức-expression)  
-7. [Async LINQ & Streams](#7-async-linq--streams)  
-8. [PLINQ (Parallel LINQ)](#8-plinq-parallel-linq)  
-9. [Custom LINQ operators (viết toán tử riêng)](#9-custom-linq-operators-viết-toán-tử-riêng)  
-10. [Best practices & Pitfalls](#10-best-practices--pitfalls)  
-11. [Cheat sheet nhanh](#11-cheat-sheet-nhanh)
+- [LINQ (Language Integrated Query) trong C#/.NET](#linq-language-integrated-query-trong-cnet)
+  - [Mục lục](#mục-lục)
+  - [1. Tư duy LINQ \& hai cú pháp](#1-tư-duy-linq--hai-cú-pháp)
+  - [2. Deferred vs Immediate execution](#2-deferred-vs-immediate-execution)
+  - [3. LINQ to Objects vs IQueryable (EF/LINQ Providers)](#3-linq-to-objects-vs-iqueryable-eflinq-providers)
+  - [4. Nhóm toán tử chuẩn (Standard Query Operators)](#4-nhóm-toán-tử-chuẩn-standard-query-operators)
+    - [4.1 Filtering: `Where`, `OfType`](#41-filtering-where-oftype)
+    - [4.2 Projection: `Select`, `SelectMany`](#42-projection-select-selectmany)
+    - [4.3 Sorting: `OrderBy`, `ThenBy`, `Reverse`](#43-sorting-orderby-thenby-reverse)
+    - [4.4 Grouping: `GroupBy`, `ToLookup`](#44-grouping-groupby-tolookup)
+    - [4.5 Joining: `Join`, `GroupJoin`, Left Join](#45-joining-join-groupjoin-left-join)
+    - [4.6 Set: `Distinct`, `Union`, `Intersect`, `Except`](#46-set-distinct-union-intersect-except)
+    - [4.7 Quantifiers: `Any`, `All`, `Contains`](#47-quantifiers-any-all-contains)
+    - [4.8 Element: `First`, `Single`, `Last`, `ElementAt`](#48-element-first-single-last-elementat)
+    - [4.9 Partitioning: `Skip`, `Take`, `SkipWhile`, `TakeWhile`](#49-partitioning-skip-take-skipwhile-takewhile)
+    - [4.10 Aggregation: `Count`, `Sum`, `Min`, `Max`, `Average`, `Aggregate`](#410-aggregation-count-sum-min-max-average-aggregate)
+    - [4.11 Generation/Conversion: `Range`, `Repeat`, `Empty`, `ToList`, `ToArray`, `ToDictionary`, `ToHashSet`…](#411-generationconversion-range-repeat-empty-tolist-toarray-todictionary-tohashset)
+    - [4.12 `Zip`, `Chunk`, `Append/Prepend`, `SequenceEqual`, `DefaultIfEmpty`](#412-zip-chunk-appendprepend-sequenceequal-defaultifempty)
+  - [5. Query syntax ↔ method syntax (bảng quy chiếu)](#5-query-syntax--method-syntax-bảng-quy-chiếu)
+  - [6. IQueryable \& biểu thức (Expression)](#6-iqueryable--biểu-thức-expression)
+  - [7. Async LINQ \& Streams](#7-async-linq--streams)
+  - [8. PLINQ (Parallel LINQ)](#8-plinq-parallel-linq)
+  - [9. Custom LINQ operators (viết toán tử riêng)](#9-custom-linq-operators-viết-toán-tử-riêng)
+  - [10. Best practices \& Pitfalls](#10-best-practices--pitfalls)
+  - [11. Cheat sheet nhanh](#11-cheat-sheet-nhanh)
 
 ---
 
