@@ -1,8 +1,8 @@
-# Collections & Generics nâng cao trong C#/.NET
+# Collections & Generics
 
 ## Mục lục
 
-- [Collections \& Generics nâng cao trong C#/.NET](#collections--generics-nâng-cao-trong-cnet)
+- [Collections \& Generics](#collections--generics)
   - [Mục lục](#mục-lục)
   - [1. Các interface cốt lõi của Collections](#1-các-interface-cốt-lõi-của-collections)
   - [2. Nhóm Collections thường dùng (mutable)](#2-nhóm-collections-thường-dùng-mutable)
@@ -42,6 +42,7 @@ IReadOnlyCollection<T> / IReadOnlyList<T> / IReadOnlyDictionary<TKey,TValue>
 ```
 
 **Nguyên tắc API**:  
+
 - **Expose tối thiểu** cần thiết (ví dụ trả `IReadOnlyList<T>` thay vì `List<T>`).  
 - **Duyệt**: mọi collection nên hỗ trợ `foreach` qua `IEnumerable<T>`.  
 - **Try-pattern**: `bool TryGetValue(TKey key, out TValue value)` để tránh ném exception trong luồng thường.
@@ -83,6 +84,7 @@ ll.AddBefore(n2, 1); // O(1)
 ### 2.3 `Queue<T>`
 
 - Hàng đợi FIFO. `Enqueue`/`Dequeue` amortized **O(1)**.
+
 ```csharp
 var q = new Queue<string>();
 q.Enqueue("a");
@@ -94,6 +96,7 @@ var x = q.Dequeue(); // "a"
 ### 2.4 `Stack<T>`
 
 - Ngăn xếp LIFO. `Push`/`Pop` amortized **O(1)**.
+
 ```csharp
 var st = new Stack<int>();
 st.Push(10);
@@ -126,6 +129,7 @@ if (dict.TryGetValue("key", out var value))
 - `SortedList` dùng **mảng đã sort** (lookup **O(log n)**, thêm/xóa **O(n)** do dịch phần tử) nhưng **tiêu tốn ít bộ nhớ** hơn & truy cập theo **index**.
 
 Chọn gì?
+
 - Nhiều **insert/remove rải rác** → `SortedDictionary`.  
 - Ít thay đổi, cần **truy cập theo index** hoặc bộ nhớ chặt → `SortedList`.
 
@@ -134,6 +138,7 @@ Chọn gì?
 ### 2.7 `HashSet<T>` / `SortedSet<T>`
 
 - `HashSet<T>`: tập hợp không trùng; các phép **Union/Intersect/Except**.
+
 ```csharp
 var a = new HashSet<int>{1,2,3};
 var b = new HashSet<int>{3,4};
