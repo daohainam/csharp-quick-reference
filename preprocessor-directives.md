@@ -1,7 +1,7 @@
 # Preprocessor directives
 
-> Preprocessor directives ảnh hưởng tới **quá trình biên dịch**: bật/tắt code, cảnh báo, nullable, v.v.  
-> Phần lớn có từ C# 1.0; riêng `#nullable` từ C# 8.0.
+Preprocessor directives ảnh hưởng tới **quá trình biên dịch**: bật/tắt code, cảnh báo, nullable, v.v.  
+Phần lớn có từ C# 1.0; riêng `#nullable` từ C# 8.0.
 
 ---
 
