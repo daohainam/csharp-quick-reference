@@ -1,8 +1,8 @@
-# Hệ thống kiểu dữ liệu trong C# (Type System) — Bản mở rộng chi tiết
+# Hệ thống kiểu dữ liệu trong C# (Common Type Sytem)
 
 ## Mục lục
 
-- [Hệ thống kiểu dữ liệu trong C# (Type System) — Bản mở rộng chi tiết](#hệ-thống-kiểu-dữ-liệu-trong-c-type-system--bản-mở-rộng-chi-tiết)
+- [Hệ thống kiểu dữ liệu trong C# (Common Type Sytem)](#hệ-thống-kiểu-dữ-liệu-trong-c-common-type-sytem)
   - [Mục lục](#mục-lục)
   - [1. Tổng quan CTS/CLS \& Runtime](#1-tổng-quan-ctscls--runtime)
   - [2. Bức tranh bộ nhớ: Stack/Managed Heap \& GC](#2-bức-tranh-bộ-nhớ-stackmanaged-heap--gc)
@@ -31,7 +31,6 @@
     - [15.3 Pattern matching](#153-pattern-matching)
   - [16. Unsafe \& unmanaged types (overview), function pointers](#16-unsafe--unmanaged-types-overview-function-pointers)
   - [17. Sơ đồ “type tree” (ASCII)](#17-sơ-đồ-type-tree-ascii)
-    - [Phụ lục: So sánh nhanh một số kiểu phổ biến](#phụ-lục-so-sánh-nhanh-một-số-kiểu-phổ-biến)
 
 ---
 
@@ -204,7 +203,7 @@ if (name is not null)
 
 ## 11. Khai báo biến & suy luận kiểu (`var`, target-typed, default literal)
 
-- **`var`**: suy luận tại compile-time từ vế phải (vẫn *strongly-typed*). Đừng lạm dụng khi làm giảm tính tự giải thích.  
+- **`var`**: suy luận tại compile-time từ vế phải (vẫn *strongly-typed*). 
 - **Target-typed `new`** (C# 9): `List<int> list = new();`  
 - **Default literal** (C# 7.1): `T x = default;` (tự suy kiểu T).  
 - **Anonymous types**: `new { Name = "A", Age = 1 }` (chỉ dùng nội bộ).
@@ -331,21 +330,3 @@ object
    ├─ delegate (Action, Func<...>, custom delegates)
    └─ dynamic (runtime-bound)
 ```
-
----
-
-### Phụ lục: So sánh nhanh một số kiểu phổ biến
-
-| Chủ đề | Gợi ý sử dụng |
-|---|---|
-| `decimal` vs `double` | **Tiền tệ/chính xác** → `decimal`; **khoa học/hình học/hiệu năng** → `double` |
-| `record` vs `class` | Cần **equality theo giá trị**, immutable → `record`; còn lại dùng `class` |
-| `struct` vs `class` | Dữ liệu nhỏ, bất biến, nhiều instance, nhạy hiệu năng/GC → `struct`; phức tạp/trạng thái phong phú → `class` |
-| `ValueTuple` vs type riêng | Trả nhiều giá trị **tạm thời** → `ValueTuple`; API public bao quát → **type đặt tên** |
-| `string` thao tác nhiều | Dùng `StringBuilder` cho nối nhiều; chú ý **culture** với so sánh/chuyển đổi |
-| `dynamic` | Chỉ khi cần interop/DSL; mặc định **tránh** để giữ type-safety |
-| `Span<T>` | Xử lý buffer/chuỗi hiệu năng cao; nhớ các **hạn chế byref-like** |
-
----
-
-**Kết luận**: Nắm chắc bản chất **giá trị vs tham chiếu**, **nullable**, **boxing**, **struct/record/enum**, **array & Span**, **generics & ràng buộc**, cùng **NRT** sẽ giúp bạn thiết kế API **an toàn, hiệu năng, dễ dùng** trong mọi bối cảnh C#/.NET hiện đại.
