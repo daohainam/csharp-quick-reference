@@ -6,11 +6,12 @@ Bộ tài liệu này được thiết kế như một dạng tài liệu tham k
 
 - [Hàm Main](main-function.md)
 - [Hệ thống kiểu dữ liệu](typesystem.md)
+- [Chỉ thị tiền biên dịch](preprocessor-directives.md)
 - [Toán tử](operators.md)
 - [Từ khóa](keywords.md)
 - [Phát biểu](statements.md)
 - [Phương thức](methods.md)
-- [Chỉ thị tiền biên dịch](preprocessor-directives.md)
+- [Delegate và Lambda](delegates-lambdas.md)
 - [Exception](exceptions.md)
 - [Lập trình hướng đối tượng trong C#](oop.md)
 - [Tập hợp](collections-generics.md)
