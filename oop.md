@@ -337,8 +337,8 @@ private string _msg;
 ```csharp
 public string Message
 {
-    get => _msg;
-    set => _msg = value ?? throw new ArgumentNullException(nameof(value));
+    get;
+    set => field = value ?? throw new ArgumentNullException(nameof(value));
 }
 ```
 
