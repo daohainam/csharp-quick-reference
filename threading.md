@@ -26,7 +26,7 @@
   - [5. Biến theo thread: `ThreadStatic`, `ThreadLocal<T>`, `AsyncLocal<T>`](#5-biến-theo-thread-threadstatic-threadlocalt-asynclocalt)
   - [6. Cancellation: kiểu hợp tác](#6-cancellation-kiểu-hợp-tác)
   - [7. Mẫu Producer/Consumer](#7-mẫu-producerconsumer)
-    - [7.1 `BlockingCollection<T>` (sư dụng Task để chaạ Thread trong ThreadPool)](#71-blockingcollectiont-sư-dụng-task-để-chaạ-thread-trong-threadpool)
+    - [7.1 `BlockingCollection<T>` (sư dụng Task để chạy Thread trong ThreadPool)](#71-blockingcollectiont-sư-dụng-task-để-chạy-thread-trong-threadpool)
     - [7.2 `System.Threading.Channels`](#72-systemthreadingchannels)
   - [8. Chẩn đoán \& đo đạc](#8-chẩn-đoán--đo-đạc)
   - [9. Best practices \& cảnh báo](#9-best-practices--cảnh-báo)
@@ -180,6 +180,7 @@ void Inc()
 
 - `lock` ≈ `Monitor.Enter/Exit` (tự động trong presence of exception).  
 - **Không lock trên `this` hoặc type public** (dễ deadlock từ code ngoài).
+- C# 13 (.NET 9) hỗ trợ kiểu System.Threading.Lock để lock hoạt động hiệu quả hơn.
 
 ### 4.2 `Interlocked` & `Volatile`
 
