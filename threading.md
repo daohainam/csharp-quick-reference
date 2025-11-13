@@ -303,7 +303,7 @@ catch (OperationCanceledException) { Console.WriteLine("Canceled"); }
 
 ## 7. Mẫu Producer/Consumer
 
-### 7.1 `BlockingCollection<T>` (sư dụng Task để chaạ Thread trong ThreadPool)
+### 7.1 `BlockingCollection<T>` (sư dụng Task để chạy Thread trong ThreadPool)
 
 ```csharp
 using System.Collections.Concurrent;
