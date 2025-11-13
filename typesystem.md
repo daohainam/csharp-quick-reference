@@ -81,7 +81,7 @@ các kiểu dữ liệu được khai báo với `class` hoặc `record` là ref
 - **Managed Heap**: nơi **object/reference type** (và **boxed value**) sống; GC thu hồi khi không còn tham chiếu.  
 - **Value type trong object**: tồn tại trong heap **bên trong** object chứa (ví dụ field của class).  
 - **Large Object Heap (LOH)** cho object lớn (≈ ≥ 85KB).  
-- **Generations** (Gen 0/1/2): tối ưu chi phí thu gom.
+- **Generations** (Gen 0/1/2): tối ưu chi phí thu gom. Có một nguyên tắc là: Những đối tượng có tuổi đời càng ngắn thì xác xuất nó không còn được sử dụng càng cao, những đối tượng static hoặc lưu trữ dữ liệu lâu dài có thể sẽ "sống" hết vòng đời ứng dụng, việc nhóm các đối tượng theo tuổi đời do vậy sẽ giúp tối ưu chi phí giải phóng.
 
 > Không phải “value type = nằm trên stack” luôn đúng; vị trí phụ thuộc **ngữ cảnh lưu trữ**.
 
