@@ -1,25 +1,56 @@
 # Lập trình hướng đối tượng trong C#  
+
 *(Class, OOP, Properties/Indexers, Events)*
 
 ---
 
 ## Mục lục
 
-1. [Class & Object cơ bản](#1-class--object-cơ-bản)  
-   1.1 [Khai báo class](#11-khai-báo-class) · 1.2 [Field/const/readonly](#12-fieldconstreadonly) · 1.3 [Access modifiers](#13-access-modifiers) · 1.4 [Static vs instance](#14-static-vs-instance) · 1.5 [Constructor](#15-constructor) · 1.6 [Finalizer & IDisposable](#16-finalizer--idisposable) · 1.7 [Partial/Nested](#17-partialnested) · 1.8 [Object initializer & `required`](#18-object-initializer--required) · 1.9 [Primary constructor (C# 12)](#19-primary-constructor-c-12)
-2. [Kế thừa & Đa hình](#2-kế-thừa--đa-hình)  
-   2.1 [`virtual`/`override`/`abstract`/`sealed`](#21-virtualoverrideabstractsealed) · 2.2 [`new` (method hiding)](#22-new-method-hiding) · 2.3 [`base` & constructor chaining](#23-base--constructor-chaining) · 2.4 [Class trừu tượng vs interface](#24-class-trừu-tượng-vs-interface) · 2.5 [Kiểm tra/cast kiểu (`is`/`as`/pattern matching)](#25-kiểm-tracast-kiểu-isaspattern-matching)
-3. [Interface](#3-interface)  
-   3.1 [Khai báo/triển khai](#31-khai-báotriển-khai) · 3.2 [Default interface methods (C# 8)](#32-default-interface-methods-c-8)
-4. [Equality & `ToString`](#4-equality--tostring)  
-   4.1 [So sánh theo tham chiếu vs theo giá trị](#41-so-sánh-theo-tham-chiếu-vs-theo-giá-trị) · 4.2 [`Equals`/`GetHashCode`/`IEquatable<T>`](#42-equalsgethashcodeiequatablet) · 4.3 [Gợi ý về `record`](#43-gợi-ý-về-record)
-5. [Properties](#5-properties)  
-   5.1 [Auto-property & backing field](#51-auto-property--backing-field) · 5.2 [Getter/setter nâng cao](#52-gettersetter-nâng-cao) · 5.3 [`init`-only (C# 9) & `required` (C# 11)](#53-init-only-c-9--required-c-11) · 5.4 [Expression-bodied/Computed property](#54-expression-bodiedcomputed-property) · 5.5 [Property & thread-safety](#55-property--thread-safety) · 5.6 [`INotifyPropertyChanged` tóm tắt](#56-inotifypropertychanged-tóm-tắt)
-6. [Indexers](#6-indexers)  
-   6.1 [Cú pháp & ví dụ](#61-cú-pháp--ví-dụ) · 6.2 [Nhiều tham số, quyền truy cập khác nhau](#62-nhiều-tham-số-quyền-truy-cập-khác-nhau) · 6.3 [Mẫu dùng thường gặp](#63-mẫu-dùng-thường-gặp)
-7. [Events](#7-events)  
-   7.1 [Ôn nhanh delegate](#71-ôn-nhanh-delegate) · 7.2 [`event` là gì?](#72-event-là-gì) · 7.3 [Đăng ký/hủy & phát sự kiện](#73-đăng-kýhủy--phát-sự-kiện) · 7.4 [Event pattern .NET (`EventHandler<T>`)](#74-event-pattern-net-eventhandlert) · 7.5 [Custom event accessor & weak event](#75-custom-event-accessor--weak-event) · 7.6 [Best practices & cảnh báo](#76-best-practices--cảnh-báo)
-8. [Best practices tổng hợp](#8-best-practices-tổng-hợp)
+- [Lập trình hướng đối tượng trong C#](#lập-trình-hướng-đối-tượng-trong-c)
+  - [Mục lục](#mục-lục)
+  - [1. Class \& Object cơ bản](#1-class--object-cơ-bản)
+    - [1.1 Khai báo class](#11-khai-báo-class)
+    - [1.2 Field/const/readonly](#12-fieldconstreadonly)
+    - [1.3 Access modifiers](#13-access-modifiers)
+    - [1.4 Static vs instance](#14-static-vs-instance)
+    - [1.5 Constructor](#15-constructor)
+    - [1.6 Finalizer \& IDisposable](#16-finalizer--idisposable)
+    - [1.7 Partial/Nested](#17-partialnested)
+    - [1.8 Object initializer \& `required`](#18-object-initializer--required)
+    - [1.9 Primary constructor (C# 12)](#19-primary-constructor-c-12)
+  - [2. Kế thừa \& Đa hình](#2-kế-thừa--đa-hình)
+    - [2.1 `virtual`/`override`/`abstract`/`sealed`](#21-virtualoverrideabstractsealed)
+    - [2.2 `new` (method hiding)](#22-new-method-hiding)
+    - [2.3 `base` \& constructor chaining](#23-base--constructor-chaining)
+    - [2.4 Class trừu tượng vs interface](#24-class-trừu-tượng-vs-interface)
+    - [2.5 Kiểm tra/cast kiểu (`is`/`as`/pattern matching)](#25-kiểm-tracast-kiểu-isaspattern-matching)
+  - [3. Interface](#3-interface)
+    - [3.1 Khai báo/triển khai](#31-khai-báotriển-khai)
+    - [3.2 Default interface methods (C# 8)](#32-default-interface-methods-c-8)
+  - [4. Equality \& `ToString`](#4-equality--tostring)
+    - [4.1 So sánh theo tham chiếu vs theo giá trị](#41-so-sánh-theo-tham-chiếu-vs-theo-giá-trị)
+    - [4.2 `Equals`/`GetHashCode`/`IEquatable<T>`](#42-equalsgethashcodeiequatablet)
+    - [4.3 Gợi ý về `record`](#43-gợi-ý-về-record)
+  - [5. Properties](#5-properties)
+    - [5.1 Auto-property \& backing field](#51-auto-property--backing-field)
+    - [5.2 Truy cập backing field (C#14)](#52-truy-cập-backing-field-c14)
+    - [5.3 Getter/setter nâng cao](#53-gettersetter-nâng-cao)
+    - [5.4 `init`-only (C# 9) \& `required` (C# 11)](#54-init-only-c-9--required-c-11)
+    - [5.5 Expression-bodied/Computed property](#55-expression-bodiedcomputed-property)
+    - [5.6 Property \& thread-safety](#56-property--thread-safety)
+    - [5.7 `INotifyPropertyChanged` tóm tắt](#57-inotifypropertychanged-tóm-tắt)
+  - [6. Indexers](#6-indexers)
+    - [6.1 Cú pháp \& ví dụ](#61-cú-pháp--ví-dụ)
+    - [6.2 Nhiều tham số, quyền truy cập khác nhau](#62-nhiều-tham-số-quyền-truy-cập-khác-nhau)
+    - [6.3 Mẫu dùng thường gặp](#63-mẫu-dùng-thường-gặp)
+  - [7. Events](#7-events)
+    - [7.1 Ôn nhanh delegate](#71-ôn-nhanh-delegate)
+    - [7.2 `event` là gì?](#72-event-là-gì)
+    - [7.3 Đăng ký/hủy \& phát sự kiện](#73-đăng-kýhủy--phát-sự-kiện)
+    - [7.4 Event pattern .NET (`EventHandler<T>`)](#74-event-pattern-net-eventhandlert)
+    - [7.5 Custom event accessor \& weak event](#75-custom-event-accessor--weak-event)
+    - [7.6 Best practices \& cảnh báo](#76-best-practices--cảnh-báo)
+  - [8. Best practices tổng hợp](#8-best-practices-tổng-hợp)
 
 ---
 
@@ -143,6 +174,7 @@ public class User
 
 var u = new User { Email = "a@b.com", Name = "Alice" };
 ```
+
 - **Object initializer** giúp đọc dễ, tránh nhiều ctor overload.  
 - `required` buộc caller khởi tạo trước khi object “hoàn tất”.
 
