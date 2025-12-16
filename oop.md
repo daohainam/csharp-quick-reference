@@ -291,7 +291,7 @@ public class Dog : Animal
 
 - **Abstract class**: chia sẻ *code + state*, có field, ctor, mức bảo vệ linh hoạt.  
 - **Interface**: chỉ hợp đồng thành viên, 1 type có thể implement **nhiều** interface.
-- Ta dùng abstract class để tạo ra một bộ khung cho các lớp con, khi chúng ta có nhiều lớp với các thành phần giống nhau, mục đích để **dùng lại** code khai báo trong abstract class. Trong khi đó, interface đóng vai trò là một bản cam kết, một hợp đồng mà trong đó các lớp khác nhau có thể dựa trên đó để làm việc với nhau, một ta biết một class khi implement một interface, ta được đảm bảo rằng class này có chứa các hàm mà interface đó định nghĩa.
+- Ta dùng abstract class để tạo ra một bộ khung cho các lớp con, khi chúng ta có nhiều lớp với các thành phần giống nhau, mục đích để **dùng lại** code khai báo trong abstract class. Trong khi đó, interface đóng vai trò là một bản cam kết, một hợp đồng mà trong đó các lớp khác nhau có thể dựa trên đó để làm việc với nhau, một khi ta biết một class implement một interface, ta được đảm bảo rằng class này có chứa các hàm mà interface đó định nghĩa.
 - Từ góc độ OOP, abstract class đại diện cho lợi ích do tính **thừa kế** mang lại, trong khi đó interface hỗ trợ tính **trừu tượng**.
 
 ### 2.5 Kiểm tra/cast kiểu (`is`/`as`/pattern matching)
