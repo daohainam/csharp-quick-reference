@@ -485,7 +485,8 @@ public class Person : INotifyPropertyChanged
 }
 ```
 
-- Dùng nhiều trong MVVM/WPF để UI tự cập nhật khi property đổi.
+- Sử dụng khi ta muốn phát ra sự kiện PropertyChanged mỗi khi một thuộc tính nào đó thay đổi giá trị.
+- Trong MVVM/WPF người ta bắt PropertyChanged để UI tự cập nhật.
 
 ---
 
