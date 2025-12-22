@@ -116,6 +116,11 @@ t.Start();
 
 ## 3. Thread Pool
 
+Thread Pool là một tập hợp các thread chạy sẵn để xử lý các nhiệm vụ, sử dụng thread pool thay vì tạo mới các **Thread**
+giúp chúng ta kiểm soát được số lượng thread có trong hệ thống. Vì việc chuyển đổi giữa các thread tốn kém tài nguyên, do
+vậy khi hệ thống càng có nhiều thread, thời gian dành cho việc chuyển đổi càng chiếm nhiều thời gian, thread pool giúp giữ 
+việc dùng các thread được hiệu quả.
+
 ### 3.1 Queue công việc
 
 ```csharp
