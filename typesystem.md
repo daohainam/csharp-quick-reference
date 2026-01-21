@@ -84,7 +84,7 @@ các kiểu dữ liệu được khai báo với `class` hoặc `record` là ref
 - **Generations** (Gen 0/1/2): tối ưu chi phí thu gom. Có một nguyên tắc là: Những đối tượng có tuổi đời càng ngắn thì xác xuất nó không còn được sử dụng càng cao, những đối tượng static hoặc lưu trữ dữ liệu lâu dài có thể sẽ "sống" hết vòng đời ứng dụng, việc nhóm các đối tượng theo tuổi đời do vậy sẽ giúp tối ưu chi phí giải phóng.
 
 > **Lưu ý quan trọng**: Value types không phải lúc nào cũng nằm trên stack. Vị trí lưu trữ phụ thuộc vào **ngữ cảnh**:
-> - Biến local value type → thường trên stack
+> - Biến local value type trong method → nằm trên stack (trừ khi bị capture trong closure hoặc async method)
 > - Value type là field của class → nằm trên heap (bên trong object)
 > - Value type bị boxed → nằm trên heap
 > - Value type trong mảng → nằm trên heap
