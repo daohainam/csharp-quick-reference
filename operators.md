@@ -41,7 +41,8 @@
 
 Từ **cao** → **thấp** (tóm tắt nhóm chính):
 
-1. **Postfix**: `x++` `x--` `x!` (null-forgiving) `a[b]` `a.b` `a?.b` `a?[^i]` `a()` `new T()` `typeof` `checked` `unchecked` `default` `nameof` `stackalloc` (phụ thuộc ngữ cảnh) — *trái → phải*  
+1. **Postfix**: `x++` `x--` `x!` (null-forgiving) `a[b]` `a.b` `a?.b` `a?[^i]` `a()` `new T()` `typeof` `checked` `unchecked` `default` `nameof` `stackalloc` — *trái → phải*
+   > Lưu ý: `default`, `nameof`, và `stackalloc` là **contextual keywords** (từ khóa phụ thuộc ngữ cảnh) - chỉ có ý nghĩa đặc biệt trong ngữ cảnh nhất định, có thể dùng làm identifier ở chỗ khác.  
 2. **Unary**: `+x` `-x` `!x` `~x` `++x` `--x` `&x` `*x` `await x` `^i` (index) — *phải → trái*  
 3. **Multiplicative**: `*` `/` `%` — *trái → phải*  
 4. **Additive**: `+` `-` — *trái → phải*  

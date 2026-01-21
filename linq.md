@@ -28,7 +28,7 @@
   - [6. IQueryable \& biểu thức (Expression)](#6-iqueryable--biểu-thức-expression)
   - [7. Async LINQ \& Streams](#7-async-linq--streams)
   - [8. PLINQ (Parallel LINQ)](#8-plinq-parallel-linq)
-  - [9. Custom LINQ operators (viết toán tử riêng)](#9-custom-linq-operators-viết-toán-tử-riêng)
+  - [9. Custom LINQ operators (viết toán tử riêng với extension methods)](#9-custom-linq-operators-viết-toán-tử-riêng-với-extension-methods)
   - [10. Best practices \& Pitfalls](#10-best-practices--pitfalls)
   - [11. Cheat sheet nhanh](#11-cheat-sheet-nhanh)
 
@@ -284,10 +284,10 @@ var result = data.AsParallel()
 
 ---
 
-## 9. Custom LINQ operators (viết toán tử riêng)
+## 9. Custom LINQ operators (viết toán tử riêng với extension methods)
 
 - LINQ to Objects dựa vào **extension methods** trả `IEnumerable<T>` (iterator + `yield return`).  
-- Bạn có thể viết toán tử tuỳ biến:
+- Bạn có thể viết toán tử tuỳ biến bằng cách tạo static extension methods trong static class:
 
 ```csharp
 public static class LinqEx
@@ -322,7 +322,7 @@ public static class LinqEx
 5. **Hiệu năng**: LINQ rõ ràng nhưng có overhead; trong hot-path cân nhắc `for`/`Span<T>`.  
 6. **EF/IQueryable**: đừng chèn method không dịch được; tránh client-eval; ghép `Where`/`Select` trước khi `ToListAsync`.  
 7. **Vòng lặp và biến captured**: cẩn thận **closure** trong lambda (đặc biệt khi tạo delegates trong vòng `for`).  
-8. **Exceptions**: `Single()` rất nghiêm – chỉ dùng khi chắc chắn có **đ đúng 1** phần tử; nếu nghi ngờ dùng `FirstOrDefault()` + kiểm tra.  
+8. **Exceptions**: `Single()` rất nghiêm – chỉ dùng khi chắc chắn có **đúng 1** phần tử; nếu nghi ngờ dùng `FirstOrDefault()` + kiểm tra.  
 9. **PLINQ**: chỉ cho CPU-bound, không I/O, tránh side-effects.  
 10. **Compose nhỏ, test dễ**: chia truy vấn thành biến trung gian đặt tên bằng `var step1 = ...; var step2 = step1.Where(...);`.
 

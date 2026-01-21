@@ -841,7 +841,7 @@ namespace MyApp.Core
 - **Mục đích:**  
   - Tạo instance: `new Type(...)`.  
   - Hide member base: `new void Foo()`.  
-  - Constraint: `where T : new()`.
+  - Constraint generic: `where T : new()` - yêu cầu kiểu T phải có constructor không tham số (public parameterless constructor).
 
 **Ví dụ:**
 
@@ -856,6 +856,12 @@ public class Base
 public class Derived : Base
 {
     public new void Print() => Console.WriteLine("Derived");
+}
+
+// Generic constraint với new():
+public class Factory<T> where T : new()
+{
+    public T Create() => new T(); // Đảm bảo T có constructor không tham số
 }
 ```
 

@@ -17,8 +17,7 @@ class HelloWorld
 
 Các chương trình C#10 có thể dùng [Top-level statements](main-function/top-level-statements.md):
 ```csharp
-		Console.WriteLine("Hello World!");
-}
+Console.WriteLine("Hello World!");
 ```
 
 ## Những cách khai báo hàm Main hợp lệ
@@ -37,7 +36,7 @@ static async Task<int> Main(string[] args) { }
 - Hàm Main có thể trả về một trong những kiểu sau: `void`, `int`, `Task`, or `Task<int>`. Trường hợp trả về int hoặc `Task<int>`, 
 Main có thể được khai báo là async và giá trị trả về sẽ là giá trị trả về cho chương trình gọi nó, ngược lại tương đương 
 với việc Main trả về 0.
-- Hàm Main có thể được khai báo không có tham số `string[]` như trong ví dụ trên.
+- Hàm Main có thể được khai báo không có tham số `string[]` như trong ví dụ trên, hoặc nhận tham số dòng lệnh - xem thêm về [tham số của hàm Main](main-function/parameter.md).
 - Khi khai báo Main là async, trình biên dịch sẽ đổi tên hàm Main của bạn thành MainAsync và tạo ra một hàm Main gọi hàm
 MainAsync.
 

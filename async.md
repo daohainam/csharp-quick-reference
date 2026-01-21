@@ -67,7 +67,7 @@ var data = await httpClient.GetStringAsync(url);
 
 Điểm quan trọng:
 
-- **Bạn viết code trông giống tuần tự**, try/catch bình thường,
+- **Bạn viết code trông như code tuần tự**, try/catch bình thường,
 - Nhưng runtime/CLR sẽ:
   - Không block thread khi chờ I/O,
   - “Bẻ” method thành **state machine** + callbacks để tiếp tục sau khi I/O hoàn thành.
@@ -95,11 +95,11 @@ public async Task<string> DownloadAsync(string url)
 
 Đặc trưng:
 
-- **Không phải** cứ `async` là chạy trên thread khác – nó **chạy trên thread hiện tại** cho tới khi gặp `await` trên một tác vụ chưa hoàn thành (có nghĩa là nếu một bên trong một method không có bất kỳ lời gọi await nào thì method sẽ hoàn toàn chỉ xử lý đồng bộ, để chạy method hoàn toàn đồng bộ hãy tham khảo phần Thread).
+- **Không phải** cứ `async` là chạy trên thread khác – nó **chạy trên thread hiện tại** cho tới khi gặp `await` trên một tác vụ chưa hoàn thành.
 - Tại mỗi `await`:
   - Nếu tác vụ đã xong → chạy tiếp như bình thường.
   - Nếu chưa xong → method **tạm thoát ra**, trả về một `Task` cho caller, và khi tác vụ xong, nó sẽ quay lại chạy từ sau `await`.
-- Một hàm async không có bất kỳ lời gọi await nào bên trong sẽ **luôn luôn** thực thi tuần tự như một hàm thông thường.
+- Một hàm async không có bất kỳ lời gọi `await` nào bên trong sẽ thực thi đồng bộ, nhưng vẫn trả về `Task` và có thể gây cảnh báo của compiler. Để chạy code thực sự bất đồng bộ trên thread khác, hãy tham khảo phần Thread.
 
 ---
 

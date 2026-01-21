@@ -153,6 +153,8 @@ a.IntersectWith(b); // a = {3}
 
 ## 3. Collections bất biến (`System.Collections.Immutable`)
 
+> **Lưu ý**: `System.Collections.Immutable` là một thư viện riêng, cần cài đặt NuGet package `System.Collections.Immutable` để sử dụng.
+
 - `ImmutableList<T>`, `ImmutableDictionary<TKey,TValue>`, `ImmutableHashSet<T>`…  
 - **Mọi thao tác sinh cấu trúc mới**; bên trong dùng **persistent data structure** để chia sẻ nút → tiết kiệm bộ nhớ so với copy thô.
 - Phù hợp: **đồng thời, chia sẻ giữa thread**, **state lịch sử** (time-travel), **functional style**.

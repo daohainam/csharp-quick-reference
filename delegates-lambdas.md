@@ -147,7 +147,7 @@ delegate(int x) { return x * x; }
 ### 6.3 Async lambda
 
 - Gắn từ khóa `async`: `async x => { await ...; }`  
-- Kiểu trả về: `Task` / `Task<T>` / **hiếm khi** `void` (chỉ cho event handler).  
+- Kiểu trả về: `Task` / `Task<T>` / **chỉ `void` cho event handler** (không nên dùng `async void` trong các trường hợp khác).  
 - Không thể vừa `async` vừa `yield` (iterator).
 
 ```csharp
