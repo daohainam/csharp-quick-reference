@@ -17,8 +17,7 @@ class HelloWorld
 
 Các chương trình C#10 có thể dùng [Top-level statements](main-function/top-level-statements.md):
 ```csharp
-		Console.WriteLine("Hello World!");
-}
+Console.WriteLine("Hello World!");
 ```
 
 ## Những cách khai báo hàm Main hợp lệ
