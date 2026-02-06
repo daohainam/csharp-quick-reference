@@ -312,7 +312,7 @@ bool Equal<T>(T a, T b) where T : IEquatable<T> => a.Equals(b);
 namespace MyApp.Core; // file-scoped
 ```
 
-- **`using` directive**: import namespace; **`global using`** (C# 10) áp dụng cho toàn project.  
+- **`using`**: import namespace; **`global using`** (C# 10) áp dụng cho toàn project.  
 - **`extern alias`**: phân biệt 2 assembly có cùng namespace/type:
 
 ```csharp
@@ -321,6 +321,21 @@ extern alias LibB;
 using A = LibA::Company.Product;
 using B = LibB::Company.Product;
 ```
+- **`using static`**: cho phép bạn sử dụng trực tiếp các thành phần static bên trong các lớp mà không cần chỉ định tên lớp.  
+
+```csharp
+using static System.Console;
+using static System.Math;
+class Program
+{
+    static void Main()
+    {
+        WriteLine(Sqrt(3*3 + 4*4));
+    }
+}
+```
+
+Trong ví dụ trên chúng ta không cần viết Console.WriteLine hay Math.Sqrt.
 
 ---
 
